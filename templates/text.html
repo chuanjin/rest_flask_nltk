@@ -13,12 +13,11 @@
 <div class="container">
   <h2>Text:</h2>
   <p>Input your text for counting:</p>
-  <form role="form">
+  <form role="form" action="{{ url_for('text') }}" method="POST">
     <div class="form-group">
-      <textarea class="form-control" rows="10" id="comment"></textarea>
+      <textarea class="form-control" rows="10" name="text" id="comment"></textarea>
     </div>
-
-    <button type="button" class="btn btn-primary">Submit</button>
+    <input type="submit" class="btn btn-primary" value="Submit">
   </form>
 </div>
 {% endblock %}

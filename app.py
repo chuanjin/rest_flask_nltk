@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 from flask_bootstrap import Bootstrap
 
 
@@ -25,6 +25,13 @@ def about():
 @app.route('/text', methods=['GET'])
 def text():
     return render_template('text.html', title="Text")
+
+@app.route('/text', methods=['POST'])
+def process():
+    print request.form.get('text')
+    return redirect(url_for('text'))
+
+
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0")
