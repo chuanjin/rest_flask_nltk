@@ -89,3 +89,4 @@ ENV/
 .ropeproject
 
 /nltk_data
+.DS_Store
