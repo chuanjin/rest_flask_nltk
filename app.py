@@ -28,6 +28,7 @@ def about():
 
 @app.route('/text', methods=['GET', 'POST'])
 def text():
+    results = {}
     if request.method == 'POST':
         raw = request.form.get('text')
         nltk.data.path.append('./nltk_data/')  # set the path
@@ -36,10 +37,8 @@ def text():
         text = nltk.Text(tokens)
         nonPunct = re.compile('.*[A-Za-z0-9].*')
         filtered = [w for w in text if nonPunct.match(w)]
-        counts = Counter(filtered)
-        print counts
-
-    return render_template('text.html', title="Text")
+        results = Counter(filtered).items()
+    return render_template('text.html', title="Text", results=results)
 
 
 
